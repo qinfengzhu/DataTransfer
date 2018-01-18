@@ -1,0 +1,26 @@
+// This Stat/Transfer command file was automatically generated on 12 6, 2011 at 2:49 pm (v11.1.1978.1118, Windows XP (build 2600, Service Pack 3))
+//ENCODING UTF-8
+log using Log.stlog append
+set numeric-names      n
+set log-level          w
+set in-encoding        utf-8
+set out-encoding       utf-8
+set enc-errors         sub
+set enc-sub-char       _
+set enc-error-limit    100
+set var-case-ci        preserve-always
+set preserve-label-sets y
+set line-end           win
+set date-fmt-write     "%m/%d/%Y"
+set time-fmt-write     "%0H:%0M:%0S"
+set datetime-fmt-write "%m/%d/%Y %0H:%0M:%0S"
+set num-miss-wr        none
+set write-sas-fmts     n
+set sas-outrep         alpha_vms_32
+set write-old-ver      18
+
+
+copy  *.csv sasx *.xpt /y
+
+
+quit
