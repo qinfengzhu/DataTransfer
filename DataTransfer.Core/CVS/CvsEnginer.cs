@@ -54,7 +54,20 @@ namespace DataTransfer.Core.CVS
                         columnValues.Clear();
                         foreach (var getValueFunction in propertyResolver.PropertyGetValueFunctions)
                         {
-                            columnValues.Append(getValueFunction.Value(item));
+                            //这里没有做针对不同数据类型的,不同处理方式
+                            var value = getValueFunction.Value(item).ToString();
+                            //这里需要处理一些意外字符
+                            if (value.Contains(","))
+                            {
+                                //如果还有双引号，先将双引号转义，避免两边加了双引号后转义错误  
+                                if (value.Contains("\""))
+                                {
+                                    value = value.Replace("\"", "\"\"");
+                                }
+                                //在将逗号转义  
+                                value = "\"" + value + "\"";
+                            } 
+                            columnValues.Append(value);
                             columnValues.Append(",");
                         }
                         sw.WriteLine(columnValues.ToString());
